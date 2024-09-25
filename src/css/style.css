@@ -1,0 +1,91 @@
+:root{
+    --categoryWidth:calc(100% / 3);
+}
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+img{
+    height: 100%;
+}
+header{
+    height: 3rem;
+    background-color: black;
+    text-align: center;
+    padding: 12px;
+    color:white;
+}
+main{
+    display: flex;
+    width: 100%;
+    height: 100svh;
+    background-color: black;
+}
+#stats{
+    height: 100%;
+    width: var(--categoryWidth);
+    background-color: white;
+}
+#main-game{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    justify-content: space-around;
+    width:var(--categoryWidth);
+    padding: 50px;
+}
+#leah{
+    place-self: center;
+    width: 250px;
+    height: 250px;
+}
+#leah>img{
+    width: 100%;
+    border-radius: 100%;
+}
+
+
+#upgrades{
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    justify-content: start;
+    gap: 70px;
+    padding: 20px;
+    height: 100%;
+    width: var(--categoryWidth);
+    background-color: white;
+}
+.upgrade{
+    display: flex;
+    flex-direction:column ;
+    background-color: blue;
+    width: 90%;
+    height: 120px;
+}
+.upgrade-body{
+    height: 100%;
+    display:grid;
+    grid-template-columns: 1fr 3fr;
+    background-color: red;
+}
+.upgrade-img>img{
+    width: 100%;
+}
+#monster-count{
+    display: flex;
+    align-items: center;
+    height: 15%;
+    justify-content:center ;
+
+}
+#count-img{
+    height: 100%;
+    rotate: 20deg;
+}
+#count-amount{
+    place-self: end;
+    color: white;
+    font-size: 3rem;
+}
