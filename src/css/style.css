@@ -67,6 +67,9 @@ main{
     width: 90%;
     height: 120px;
 }
+.upgrade-price{
+    font-size: 1.2rem;
+}
 .upgrade-body{
     height: 100%;
     display:grid;
