@@ -7,13 +7,18 @@ const game = {
     // Add monsters
     addMonster:()=>{
         let multipliers = [];
+        let multiplier;
+
         for(const upgrade of game.activeUpgrades){
             console.log(game.activeUpgrades)
             multipliers.push(upgrade.multiplier)
         }
-
-
-        let multiplier = multipliers.reduce((acc,curr)=> acc+curr,0);
+        if(multipliers.length > 0)
+            {     
+                multiplier = multipliers.reduce((acc,curr)=> acc+curr,0);
+            }else{
+                multiplier = 1
+            }
         game.monsterAmount+= 1 * multiplier;
         document.querySelector('#count-amount').textContent=`x ${game.monsterAmount}`
         
@@ -29,7 +34,7 @@ const game = {
             name: 'programmerSocks',
             price: 100,
             monstersLeftToBuy: 999,
-            multiplier: 2,
+            multiplier: 1.1,
             description:'lorem ipsum',
 
         },
