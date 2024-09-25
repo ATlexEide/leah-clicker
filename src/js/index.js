@@ -6,7 +6,15 @@ const game = {
     },
     // Add monsters
     addMonster:()=>{
-        game.monsterAmount++;
+        let multipliers = [];
+        for(const upgrade of game.activeUpgrades){
+            console.log(game.activeUpgrades)
+            multipliers.push(upgrade.multiplier)
+        }
+
+
+        let multiplier = multipliers.reduce((acc,curr)=> acc+curr,0);
+        game.monsterAmount+= 1 * multiplier;
         document.querySelector('#count-amount').textContent=`x ${game.monsterAmount}`
         
         game.getMonstersLeft()
@@ -21,7 +29,7 @@ const game = {
             name: 'programmerSocks',
             price: 100,
             monstersLeftToBuy: 999,
-            multiplier: undefined,
+            multiplier: 2,
             description:'lorem ipsum',
 
         },
@@ -42,6 +50,10 @@ const game = {
 
         },
     ],
+    activeUpgrades:[],
+    addUpgrade:(upgrade)=>{
+        game.activeUpgrades.push(upgrade)
+    },
     getMonstersLeft: ()=>{
         for(const upgrade of game.upgrades){
             upgrade.monstersLeftToBuy = upgrade.price - game.monsterAmount
@@ -49,6 +61,7 @@ const game = {
         }
     }
 }
+game.addUpgrade(game.upgrades[0])
 document.querySelector('#leah').addEventListener('mousedown',(e)=>{
 e.preventDefault()
     console.clear()
