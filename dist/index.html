@@ -4,23 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leah Clicker</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js" defer></script>
 <script defer src="index.bundle.js"></script></head>
 <body>
+    <header>Leah Clicker</header>
     <main>
         <div id="stats">
-            text
             <div id="stats-clicks"></div>
         </div>
-        <div id="game-main">
+        <div id="main-game">
             <div id="header"></div>
-            <div id="leah"></div>
-            <div id="monster-count"></div>
+                <div id="leah">
+                    <img src="./images/leah.jpeg" alt="a weeb">
+                </div>
+            <div id="monster-count">
+                <div id="count-img">
+                    <img src="./images/white-monster.webp" alt="White monster can">
+                </div>
+                <div id="count-amount">x  0</div>
+            </div>
         </div>
         <div id="upgrades">
-            <div id="programmer-socks"></div>
-            <div id="miku"></div>
-            <div id="neeko"></div>
+            <div class="upgrade">
+                <div class="upgrade-header">
+                    <h1 class="upgrade-name" id="programmerSocks">Programmer socks</h1>
+                </div>
+                <div class="upgrade-body">
+                    <div class="upgrade-img">
+                        <img src="./images/socks.webp" alt="Programmer socks">
+                    </div>
+                    <div class="upgrade-desc">
+                        <h2 class="upgrade-price" id="programmerSocks-price">Price: | Monsters remaining to buy:</h2>
+                        <p class="desc-para"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="upgrade">
+                <div class="upgrade-header">
+                    <h1 class="upgrade-name" id="miku">Miku</h1>
+                </div>
+                <div class="upgrade-body">
+                    <div class="upgrade-img">
+                        <img src="./images/miku.jpeg" alt="hatsune miku">
+                    </div>
+                    <div class="upgrade-desc">
+                        <h2 class="upgrade-price" id="miku-price">Price: | Monsters remaining to buy:</h2>
+                        <p class="desc-para"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="upgrade">
+                <div class="upgrade-header">
+                    <h1 class="upgrade-name" id="neeko">Neeko</h1>
+                </div>
+                <div class="upgrade-body">
+                    <div class="upgrade-img">
+                        <img src="./images/neeko.png" alt="Neeko">
+                    </div>
+                    <div class="upgrade-desc">
+                        <h2 class="upgrade-price" id="neeko-price">Price: | Monsters remaining to buy:</h2>
+                        <p class="desc-para"></p>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </main>
 </body>
