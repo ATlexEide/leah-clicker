@@ -44,6 +44,9 @@ main{
     width: 100%;
     border-radius: 100%;
 }
+#leah>img:active{
+    scale: 1.1;
+}
 
 
 #upgrades{
