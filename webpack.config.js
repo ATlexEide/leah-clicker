@@ -17,10 +17,16 @@ module.exports = {
         static: {
             directory: path.resolve(__dirname, 'dist')
         },
+        server:{
+            options:{
+                target:'web'
+            },
+        },
         port: 3000,
         open: true,
         compress: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot:true,
     },
     module: {
         rules: [
@@ -32,7 +38,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'To do list',
+            title: '',
             filename: 'index.html',
             template: path.resolve(__dirname, 'src/index.html')
         }),
