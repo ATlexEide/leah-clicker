@@ -17,16 +17,10 @@ module.exports = {
         static: {
             directory: path.resolve(__dirname, 'dist')
         },
-        server:{
-            options:{
-                target:'web'
-            },
-        },
         port: 3000,
         open: true,
         compress: true,
         historyApiFallback: true,
-        hot:true,
     },
     module: {
         rules: [
