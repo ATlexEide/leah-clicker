@@ -99,7 +99,8 @@ document.querySelector('#programmerSocks-buy').addEventListener('click',()=>{
 game.addUpgrade(game.upgrades[0])
 document.querySelector('#leah').addEventListener('mousedown',(e)=>{
 e.preventDefault()
-    console.clear()
-    game.addClick()
-    console.table(game.upgrades)
+console.clear()
+game.addClick()
+console.table(game.upgrades)
+document.title = `x ${game.monsterAmount}`
 })
