@@ -1,3 +1,4 @@
+
 const game = {
     // Add clicks
     addClick:()=>{
@@ -19,8 +20,9 @@ const game = {
             }else{
                 multiplier = 1
             }
-        game.monsterAmount+= 1 * multiplier;
-        document.querySelector('#count-amount').textContent=`x ${game.monsterAmount}`
+        game.monsterAmount += 1 * multiplier;
+        // Display how many monsters the player have
+        document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`
         
         game.getMonstersLeft()
     },
@@ -34,7 +36,7 @@ const game = {
             name: 'programmerSocks',
             price: 100,
             monstersLeftToBuy: 999,
-            multiplier: 1.1,
+            multiplier: 1.222,
             description:'lorem ipsum',
 
         },
@@ -62,7 +64,7 @@ const game = {
     getMonstersLeft: ()=>{
         for(const upgrade of game.upgrades){
             upgrade.monstersLeftToBuy = upgrade.price - game.monsterAmount
-            document.getElementById(`${upgrade.name}-price`).textContent = `Price: ${upgrade.price} >> Monsters remaining to buy: ${upgrade.monstersLeftToBuy}`
+            document.getElementById(`${upgrade.name}-price`).textContent = `Price: ${upgrade.price} >> Monsters remaining to buy: ${upgrade.monstersLeftToBuy.toFixed(1)}`
         }
     }
 }
