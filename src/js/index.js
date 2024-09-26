@@ -1,6 +1,5 @@
-// import '../css/style.css';
-
 const game = {
+    // What do you think
     init:(()=>{
         console.log('Init');
         document.querySelector('#leah').addEventListener('mousedown',(e)=>{
@@ -11,19 +10,20 @@ const game = {
         document.title = `x ${game.monsterAmount}`
 })
     })(),
+    // Read the key name
     updateDisplay: ()=>{
                 document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`
 
 
     },
-    // Add clicks
+    // Read the key name
     addClick:()=>{
         const clicks = document.getElementById('clicks-display');
         game.clicks++;
         clicks.textContent = `${game.clicks}`
         game.addMonster();
     },
-    // Add monsters
+    // Read the key name
     addMonster:()=>{
         const multipliers = [];
         let multiplier;
@@ -46,11 +46,11 @@ const game = {
         
         game.getMonstersLeft()
     },
-    // // White Monsters / Points    monsterAmount: undefined,
+    // // White Monsters / Points
     monsterAmount: 90,
-    // Clicks
+    // Amount of registered clicks
     clicks: 0,
-    // Upgrades
+    // Available upgrades
     upgrades:{
          programmerSocks:{   
             name: 'programmerSocks',
@@ -80,14 +80,11 @@ const game = {
 
         },
     },
+    // List of active/bought upgrades
     activeUpgrades:[],
+    // Add upgrade to active upgrades
     addUpgrade:(upgrade)=>{
-
-game.activeUpgrades.push(game.upgrades[upgrade])
-
-
-
-      
+        game.activeUpgrades.push(game.upgrades[upgrade]);
         const list = document.getElementById('stats-upgrades-display')
         list.innerHTML = '';
         for(const upgrade of game.activeUpgrades){
@@ -122,7 +119,5 @@ btn.addEventListener('click',()=>{
     game.priceCheck(upgrade)
 })
 // /////////////////////////
-
-
 game.addUpgrade('miku')
 // /////////////////////////
