@@ -1,14 +1,21 @@
-import '../css/style.css';
+// import '../css/style.css';
 
 const game = {
+    updateDisplay: ()=>{
+                document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`
+
+
+    },
     // Add clicks
     addClick:()=>{
+        const clicks = document.getElementById('clicks-display');
         game.clicks++;
+        clicks.textContent = `${game.clicks}`
         game.addMonster();
     },
     // Add monsters
     addMonster:()=>{
-        let multipliers = [];
+        const multipliers = [];
         let multiplier;
 
         for(const upgrade of game.activeUpgrades){
@@ -17,7 +24,7 @@ const game = {
         }
         if(multipliers.length > 0)
             {     
-                multiplier = multipliers.reduce((acc,curr)=> acc+curr,0);
+                multiplier = 1 + multipliers.reduce((acc,curr)=> acc+curr,0);
             }else{
                 multiplier = 1
             }
@@ -37,7 +44,7 @@ const game = {
             name: 'programmerSocks',
             price: 100,
             monstersLeftToBuy: 999,
-            multiplier: 1.222,
+            multiplier: 0.5,
             description:'lorem ipsum',
 
         },
@@ -61,6 +68,13 @@ const game = {
     activeUpgrades:[],
     addUpgrade:(upgrade)=>{
         game.activeUpgrades.push(upgrade)
+        const list = document.getElementById('stats-upgrades-display')
+        list.innerHTML = '';
+        for(const upgrade of game.activeUpgrades){
+            const li = document.createElement('li');
+            li.textContent = upgrade.name;
+            list.appendChild(li)
+        }
     },
     getMonstersLeft: ()=>{
         for(const upgrade of game.upgrades){
@@ -69,6 +83,19 @@ const game = {
         }
     }
 }
+
+
+// ///////TESTING//////////
+document.querySelector('#programmerSocks-buy').addEventListener('click',()=>{
+    if(game.monsterAmount >= game.upgrades[0].price){
+        game.addUpgrade(game.upgrades[0]);
+        game.monsterAmount -= game.upgrades[0].price
+        game.updateDisplay()
+    }
+})
+// /////////////////////////
+
+
 game.addUpgrade(game.upgrades[0])
 document.querySelector('#leah').addEventListener('mousedown',(e)=>{
 e.preventDefault()
