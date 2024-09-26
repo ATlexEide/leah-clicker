@@ -1,6 +1,16 @@
 // import '../css/style.css';
 
 const game = {
+    init:(()=>{
+        console.log('Init');
+        document.querySelector('#leah').addEventListener('mousedown',(e)=>{
+        e.preventDefault()
+        console.clear()
+        game.addClick()
+        console.table(game.upgrades)
+        document.title = `x ${game.monsterAmount}`
+})
+    })(),
     updateDisplay: ()=>{
                 document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`
 
@@ -95,28 +105,24 @@ game.activeUpgrades.push(game.upgrades[upgrade])
             const priceElement = document.getElementById(`${item.name}-price`);
             priceElement.textContent = `Price: ${item.price} >> Monsters remaining to buy: ${item.monstersLeftToBuy.toFixed(1)}`;
         }
-    }
-}
-
-
-// ///////TESTING//////////
-const programmerSocksBtn = document.querySelector('#programmerSocks-buy');
-programmerSocksBtn.addEventListener('click',()=>{
-   const upgrade = programmerSocksBtn.id.split('-')[0];
+    },
+    priceCheck:(upgrade)=>{
     if(game.monsterAmount >= game.upgrades[upgrade].price){
         game.addUpgrade(upgrade);
         game.monsterAmount -= game.upgrades[upgrade].price
         game.updateDisplay()
     }
+},
+}
+
+// ///////TESTING//////////
+const btn = document.querySelector('#programmerSocks');
+btn.addEventListener('click',()=>{
+   const upgrade = btn.id;
+    game.priceCheck(upgrade)
 })
 // /////////////////////////
 
 
 game.addUpgrade('miku')
-document.querySelector('#leah').addEventListener('mousedown',(e)=>{
-e.preventDefault()
-console.clear()
-game.addClick()
-console.table(game.upgrades)
-document.title = `x ${game.monsterAmount}`
-})
+// /////////////////////////
