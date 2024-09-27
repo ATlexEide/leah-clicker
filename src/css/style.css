@@ -111,6 +111,12 @@ main{
     font-size: 3rem;
 }
 
+.upgrade-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px;
+}
 .upgrade-buttons,
 .upgrade-buttons>button{
     width: 100%;
