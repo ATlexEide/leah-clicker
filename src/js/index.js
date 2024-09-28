@@ -2,6 +2,7 @@ const game = {
     // What do you think
     init:(()=>{
         console.log('Init');
+        // Check for clicks
         document.querySelector('#leah').addEventListener('mousedown',(e)=>{
         e.preventDefault()
         console.clear()
