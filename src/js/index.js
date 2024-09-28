@@ -1,13 +1,19 @@
 const game = {
+    imageRotation:{
+        image: document.querySelector('#leah'),
+        deg:0,
+    },
     // What do you think
     init:(()=>{
         console.log('Init');
         // Check for clicks
         document.querySelector('#leah').addEventListener('mousedown',(e)=>{
+            game.imageRotation.deg+=10
         e.preventDefault()
         console.clear()
         game.addClick()
         console.table(game.upgrades)
+        game.imageRotation.image.style.rotate=`${game.imageRotation.deg}deg`
         document.title = `x ${game.monsterAmount}`
 })
     })(),
