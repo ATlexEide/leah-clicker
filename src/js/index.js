@@ -109,6 +109,7 @@ const game = {
             
         }
     },
+    // Get and display amount of monsters left to buy upgrade
     getMonstersLeft: ()=>{
         for(const upgrade of Object.entries(game.upgrades)){
             const item = upgrade[1];
@@ -117,6 +118,7 @@ const game = {
             priceElement.textContent = `Price: ${item.price} >> Monsters remaining to buy: ${item.monstersLeftToBuy.toFixed(1)}`;
         }
     },
+    // If player has enough monsters for an upgrade, add upgrade and delete monsters
     priceCheck:(upgrade)=>{
     if(game.monsterAmount >= game.upgrades[upgrade].price){
         game.addUpgrade(upgrade);
