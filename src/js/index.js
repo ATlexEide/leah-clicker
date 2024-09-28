@@ -53,30 +53,33 @@ const game = {
     // Available upgrades
     upgrades:{
          programmerSocks:{   
-            name: 'programmerSocks',
+            id: 'programmerSocks',
+            name:'Programmer Socks',
             price: 100,
             monstersLeftToBuy: 999,
             multiplier: 0.5,
             description:'lorem ipsum',
-            owned:0,
+            amount:0,
 
         },
         miku:{
-            name: 'miku',
+            id: 'miku',
+            name:'Miku',
             price: 500,
             monstersLeftToBuy: 999,
             multiplier: 10,
             description:'lorem ipsum',
-            owned:0,
+            amount:0,
 
         },
         neeko:{
-            name: 'neeko',
+            id: 'neeko',
+            name:'Neeko',
             price: 1000,
             monstersLeftToBuy: 999,
-            multiplier: undefined,        
+            multiplier: 100,        
             description:'lorem ipsum',
-            owned:0,
+            amount:0,
 
         },
     },
@@ -84,15 +87,26 @@ const game = {
     activeUpgrades:[],
     // Add upgrade to active upgrades
     addUpgrade:(upgrade)=>{
+        game.upgrades[upgrade].amount++
         game.activeUpgrades.push(game.upgrades[upgrade]);
+     
+
         const list = document.getElementById('stats-upgrades-display')
         list.innerHTML = '';
         for(const upgrade of game.activeUpgrades){
+           const currLi = document.getElementById(`${upgrade.id}-li`)
             if(upgrade === undefined)
                 return
-            const li = document.createElement('li');
-            li.textContent = upgrade.name;
-            list.appendChild(li)
+            if(!list.contains(currLi)){
+                const li = document.createElement('li');
+                li.id = `${upgrade.id}-li`;
+                li.textContent = upgrade.name;
+                list.appendChild(li);
+            }else{
+                document.querySelector(`#${upgrade.id}-li`).textContent=`${upgrade.name} x${upgrade.amount}`
+            }
+
+            
         }
     },
     getMonstersLeft: ()=>{
@@ -113,11 +127,13 @@ const game = {
 }
 
 // ///////TESTING//////////
-const btn = document.querySelector('#programmerSocks');
-btn.addEventListener('click',()=>{
-   const upgrade = btn.id;
-    game.priceCheck(upgrade)
-})
+const btns = document.querySelectorAll('.upgrade-buttons');
+for(const button of btns){
+button.addEventListener('click',()=>{
+        const upgrade = button.id;
+        game.priceCheck(upgrade)
+    })
+}
 // /////////////////////////
 game.addUpgrade('miku')
-// /////////////////////////
+// /////////////////////////    
