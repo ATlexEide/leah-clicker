@@ -8,26 +8,24 @@ const game = {
         console.log('Init');
         // Check for clicks
         document.querySelector('#leah').addEventListener('mousedown',(e)=>{
-            game.imageRotation.deg+=10
-        e.preventDefault()
-        console.clear()
-        game.addClick()
+        game.imageRotation.deg += 10;
+        e.preventDefault();
+        console.clear();
+        game.addClick();
         console.table(game.upgrades)
-        game.imageRotation.image.style.rotate=`${game.imageRotation.deg}deg`
-        document.title = `x ${game.monsterAmount}`
-})
+        game.imageRotation.image.style.rotate=`${game.imageRotation.deg}deg`;
+        document.title = `x ${game.monsterAmount}`;
+});
     })(),
     // Read the key name
     updateDisplay: ()=>{
-                document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`
-
-
+    document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`;
     },
     // Read the key name
     addClick:()=>{
         const clicks = document.getElementById('clicks-display');
         game.clicks++;
-        clicks.textContent = `${game.clicks}`
+        clicks.textContent = `${game.clicks}`;
         game.addMonster();
     },
     // Read the key name
@@ -37,21 +35,21 @@ const game = {
 
         for(const upgrade of game.activeUpgrades){
             if(upgrade === undefined)
-                return
-            console.log(game.activeUpgrades)
-            multipliers.push(upgrade.multiplier)
-        }
+                return;
+            console.log(game.activeUpgrades);
+            multipliers.push(upgrade.multiplier);
+        };
+
         if(multipliers.length > 0)
             {     
                 multiplier = 1 + multipliers.reduce((acc,curr)=> acc+curr,0);
             }else{
-                multiplier = 1
-            }
+                multiplier = 1;
+            };
         game.monsterAmount += 1 * multiplier;
         // Display how many monsters the player have
-        document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`
-        
-        game.getMonstersLeft()
+        document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`;
+        game.getMonstersLeft();
     },
     // // White Monsters / Points
     monsterAmount: 90,
@@ -59,7 +57,7 @@ const game = {
     clicks: 0,
     // Available upgrades
     upgrades:{
-         programmerSocks:{   
+        programmerSocks:{   
             id: 'programmerSocks',
             name:'Programmer Socks',
             price: 100,
@@ -67,8 +65,7 @@ const game = {
             multiplier: 0.5,
             description:'lorem ipsum',
             amount:0,
-
-        },
+            },
         miku:{
             id: 'miku',
             name:'Miku',
@@ -77,8 +74,7 @@ const game = {
             multiplier: 10,
             description:'lorem ipsum',
             amount:0,
-
-        },
+            },
         neeko:{
             id: 'neeko',
             name:'Neeko',
@@ -87,34 +83,30 @@ const game = {
             multiplier: 100,        
             description:'lorem ipsum',
             amount:0,
-
-        },
+            },
     },
     // List of active/bought upgrades
     activeUpgrades:[],
     // Add upgrade to active upgrades
     addUpgrade:(upgrade)=>{
-        game.upgrades[upgrade].amount++
+        game.upgrades[upgrade].amount++;
         game.activeUpgrades.push(game.upgrades[upgrade]);
      
-
-        const list = document.getElementById('stats-upgrades-display')
+        const list = document.getElementById('stats-upgrades-display');
         list.innerHTML = '';
         for(const upgrade of game.activeUpgrades){
-           const currLi = document.getElementById(`${upgrade.id}-li`)
+           const currLi = document.getElementById(`${upgrade.id}-li`);
             if(upgrade === undefined)
-                return
+                return;
             if(!list.contains(currLi)){
                 const li = document.createElement('li');
                 li.id = `${upgrade.id}-li`;
                 li.textContent = upgrade.name;
                 list.appendChild(li);
             }else{
-                document.querySelector(`#${upgrade.id}-li`).textContent=`${upgrade.name} x${upgrade.amount}`
-            }
-
-            
-        }
+                document.querySelector(`#${upgrade.id}-li`).textContent=`${upgrade.name} x${upgrade.amount}`;
+            };
+        };
     },
     // Get and display amount of monsters left to buy upgrade
     getMonstersLeft: ()=>{
@@ -123,26 +115,26 @@ const game = {
             item.monstersLeftToBuy = item.price - game.monsterAmount;
             const priceElement = document.getElementById(`${item.id}-price`);
             priceElement.textContent = `Price: ${item.price} >> Monsters remaining to buy: ${item.monstersLeftToBuy.toFixed(1)}`;
-        }
+        };
     },
     // If player has enough monsters for an upgrade, add upgrade and delete monsters
     priceCheck:(upgrade)=>{
     if(game.monsterAmount >= game.upgrades[upgrade].price){
         game.addUpgrade(upgrade);
-        game.monsterAmount -= game.upgrades[upgrade].price
-        game.updateDisplay()
-    }
+        game.monsterAmount -= game.upgrades[upgrade].price;
+        game.updateDisplay();
+    };
 },
-}
+};
 
 // ///////TESTING//////////
 const btns = document.querySelectorAll('.upgrade-buttons');
 for(const button of btns){
 button.addEventListener('click',()=>{
         const upgrade = button.id;
-        game.priceCheck(upgrade)
-    })
-}
+        game.priceCheck(upgrade);
+    });
+};
 // /////////////////////////
-game.addUpgrade('miku')
+game.addUpgrade('miku');
 // /////////////////////////    
