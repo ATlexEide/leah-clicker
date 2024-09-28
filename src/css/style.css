@@ -2,9 +2,12 @@
     --categoryWidth:calc(100% / 3);
     --header-height:3rem;
 }
-* {
+*{
     margin: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0;
 }
 .upgrade-img{
     display: flex;
