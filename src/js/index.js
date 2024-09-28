@@ -113,7 +113,7 @@ const game = {
         for(const upgrade of Object.entries(game.upgrades)){
             const item = upgrade[1];
             item.monstersLeftToBuy = item.price - game.monsterAmount;
-            const priceElement = document.getElementById(`${item.name}-price`);
+            const priceElement = document.getElementById(`${item.id}-price`);
             priceElement.textContent = `Price: ${item.price} >> Monsters remaining to buy: ${item.monstersLeftToBuy.toFixed(1)}`;
         }
     },
