@@ -133,6 +133,7 @@ for(const button of btns){
 button.addEventListener('click',()=>{
         const upgrade = button.id;
         game.priceCheck(upgrade);
+        game.getMonstersLeft();
     });
 };
 // /////////////////////////
