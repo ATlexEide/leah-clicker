@@ -144,4 +144,5 @@ button.addEventListener('click',()=>{
     });
 };
 game.printUpgradeInfo()
+game.getMonstersLeft()
 // /////////////////////////

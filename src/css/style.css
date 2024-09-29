@@ -2,12 +2,29 @@
     --categoryWidth:calc(100% / 3);
     --header-height:3rem;
 }
+html{
+background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );}
 *{
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
     padding: 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .upgrade-img{
     display: flex;
@@ -15,28 +32,38 @@
     margin-right: 8px;
 }
 .upgrade-img>img{
-    height: 100%;
+    height: 113px;
     width: 100%;
 }
 header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height:var(--header-height);
-    background-color: black;
-    text-align: center;
-    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
     color:white;
+    font-size: 2rem;
+    -webkit-text-stroke: black 1px;
+}
+header>span{
+    align-self: flex-end;
+    padding: .7rem;
+    font-size: .8rem;
+    -webkit-text-stroke: black 0px;
 }
 main{
     display: flex;
     width: 100%;
     height: calc(100svh - var(--header-height));
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
 }
 #stats{
     height: 100%;
     width: var(--categoryWidth);
-    background-color: rgb(234, 10, 10);
+    background-color: rgba(0, 0, 0, 0.3);
     display: grid;
-    grid:repeat(4,100px)/1fr
+    grid:repeat(4,100px)/1fr;
+    -webkit-text-stroke: black 1px;
 }
 #stats-clicks{
     display: flex;
@@ -44,12 +71,16 @@ main{
     justify-content: center;
     align-items: center;
 }
+#clicks-display{
+    font-size: 2rem;
+}
 
 #stats-upgrades{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
 }
 #main-game{
     display: flex;
@@ -84,16 +115,18 @@ main{
     padding: 20px;
     height: 100%;
     width: var(--categoryWidth);
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
 }
 .upgrade{
     display: flex;
     flex-direction:column ;
-    background-color: blue;
+    background-color: rgba(35, 35, 35, .2);
     width: 90%;
     height: 150px;
 }
 .upgrade-name{
+    background-color: rgba(35, 35, 35, .4);
+    -webkit-text-stroke: black 1px;
     text-align: center;
 }
 .upgrade-price{
@@ -103,7 +136,7 @@ main{
     height: 100%;
     display:grid;
     grid-template-columns: 1fr 2fr 1fr;
-    background-color: red;
+    background-color: rgba(16, 16, 16, 0);
 }
 #monster-count{
     display: flex;
@@ -120,6 +153,7 @@ main{
     place-self: end;
     color: white;
     font-size: 3rem;
+    -webkit-text-stroke: black 2px;
 }
 
 .upgrade-buttons{
@@ -131,4 +165,8 @@ main{
 .upgrade-buttons,
 .upgrade-buttons>button{
     width: 100%;
+}
+.upgrade-buttons>button{
+    background-color: green;
+
 }
