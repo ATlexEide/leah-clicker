@@ -59,7 +59,7 @@ const game = {
         game.getMonstersLeft();
     },
     // // White Monsters / Points
-    monsterAmount: 90,
+    monsterAmount: 0,
     // Amount of registered clicks
     clicks: 0,
     // Available upgrades
