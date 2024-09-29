@@ -18,6 +18,13 @@ const game = {
 });
     })(),
     // Read the key name
+    printUpgradeInfo:()=>{
+        for(const upgrade of Object.entries(game.upgrades)){
+            if(!upgrade)
+                return
+            document.getElementById(`${upgrade[1].id}-desc`).textContent = upgrade[1].description;
+        }
+    },
     updateDisplay: ()=>{
     document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`;
     },
@@ -63,7 +70,7 @@ const game = {
             price: 100,
             monstersLeftToBuy: 999,
             multiplier: 0.5,
-            description:'lorem ipsum',
+            description:'Sokker som gir deg en buff på programmering. Debuff på straightness. Følger med vscode themes!',
             amount:0,
             },
         miku:{
@@ -72,7 +79,7 @@ const game = {
             price: 500,
             monstersLeftToBuy: 999,
             multiplier: 10,
-            description:'lorem ipsum',
+            description:'Beste vocaloid artisten. En kjærlig og fantastisk vocaloid som eier hele verden og skaper glede.',
             amount:0,
             },
         neeko:{
@@ -81,7 +88,7 @@ const game = {
             price: 1000,
             monstersLeftToBuy: 999,
             multiplier: 100,        
-            description:'lorem ipsum',
+            description:'En vill og quirky kvinne med lesbiske tendenser. Shuma sniffer og hella cute. Bird fetishiser.',
             amount:0,
             },
     },
@@ -136,6 +143,7 @@ button.addEventListener('click',()=>{
         game.getMonstersLeft();
     });
 };
+game.printUpgradeInfo()
 // /////////////////////////
 game.addUpgrade('miku');
 // /////////////////////////
