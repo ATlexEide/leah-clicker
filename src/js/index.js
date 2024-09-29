@@ -145,5 +145,3 @@ button.addEventListener('click',()=>{
 };
 game.printUpgradeInfo()
 // /////////////////////////
-game.addUpgrade('miku');
-// /////////////////////////
