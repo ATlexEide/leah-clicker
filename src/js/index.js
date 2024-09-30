@@ -35,25 +35,10 @@ const game = {
         clicks.textContent = `${game.clicks}`;
         game.addMonster();
     },
+    multiplier: 1,
     // Read the key name
     addMonster:()=>{
-        const multipliers = [];
-        let multiplier;
-
-        for(const upgrade of game.activeUpgrades){
-            if(upgrade === undefined)
-                return;
-            console.log(game.activeUpgrades);
-            multipliers.push(upgrade.multiplier);
-        };
-
-        if(multipliers.length > 0)
-            {     
-                multiplier = 1 + multipliers.reduce((acc,curr)=> acc+curr,0);
-            }else{
-                multiplier = 1;
-            };
-        game.monsterAmount += 1 * multiplier;
+        game.monsterAmount += 1 * game.multiplier;
         // Display how many monsters the player have
         document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`;
         game.getMonstersLeft();
@@ -96,8 +81,10 @@ const game = {
     activeUpgrades:[],
     // Add upgrade to active upgrades
     addUpgrade:(upgrade)=>{
-        game.upgrades[upgrade].amount++;
-        game.activeUpgrades.push(game.upgrades[upgrade]);
+        const currUpgrade = game.upgrades[upgrade];
+        game.multiplier += currUpgrade.multiplier;
+        currUpgrade.amount++;
+        game.activeUpgrades.push(currUpgrade);
      
         const list = document.getElementById('stats-upgrades-display');
         list.innerHTML = '';
