@@ -1,14 +1,14 @@
 import { displayUpgrades } from "./displayUpgrades.mjs";
 import { upgrades } from "./upgrades.mjs";
-const game = {
+displayUpgrades();
+let game = {
     imageRotation:{
         image: document.querySelector('#leah'),
         deg:0,
     },
     // What do you think
-    init:(()=>{
+    init:()=>{
         console.log('Init');
-        displayUpgrades();
         // Check for clicks
         document.querySelector('#leah').addEventListener('mousedown',(e)=>{
         game.imageRotation.deg += 10;
@@ -19,7 +19,7 @@ const game = {
         game.imageRotation.image.style.rotate=`${game.imageRotation.deg}deg`;
         document.title = `x ${game.monsterAmount}`;
 });
-    })(),
+    },
     // Read the key name
     printUpgradeInfo:()=>{
         game.upgrades.forEach(upgrade => {
@@ -31,6 +31,9 @@ const game = {
     },
     updateDisplay: ()=>{
     document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`;
+    document.querySelector('#clicks-display').textContent=`${game.clicks}`;
+game.displayActiveUpgrades();
+
     },
     // Read the key name
     addClick:()=>{
@@ -57,23 +60,25 @@ const game = {
     activeUpgrades:[],
     // Add upgrade to active upgrades
     addUpgrade:(upgrade)=>{
-        const currUpgrade = upgrade;
-        game.multiplier += currUpgrade.multiplier;
-        currUpgrade.amount++;
-        game.activeUpgrades.push(currUpgrade);
-     
-        const list = document.getElementById('stats-upgrades-display');
-        list.innerHTML = '';
-        for(const upgrade of game.activeUpgrades){
-           const currLi = document.getElementById(`${upgrade.id}-li`);
-            if(upgrade === undefined)
+        game.multiplier += upgrade.multiplier;
+        upgrade.amount++;
+        game.activeUpgrades.push(upgrade);
+        game.displayActiveUpgrades();
+        game.updateDisplay();
+    },
+     displayActiveUpgrades:()=>{
+         const list = document.getElementById('stats-upgrades-display');
+         list.innerHTML = '';
+         for(const upgrade of game.activeUpgrades){
+             const currLi = document.getElementById(`${upgrade.id}-li`);
+             if(upgrade === undefined)
                 return;
             if(!list.contains(currLi)){
                 const li = document.createElement('li');
                 li.id = `${upgrade.id}-li`;
                 li.textContent = upgrade.name;
                 list.appendChild(li);
-            }else{
+            }else if(upgrade.amount >1){
                 document.querySelector(`#${upgrade.id}-li`).textContent=`${upgrade.name} x${upgrade.amount}`;
             };
         };
@@ -84,7 +89,6 @@ const game = {
             if(upgrade === null || upgrade === undefined){
                 return;
             }else {
-
                 const item = upgrade;
                 item.monstersLeftToBuy = item.price - game.monsterAmount;
                 const priceElement = document.getElementById(`${item.id}-price`);
@@ -101,6 +105,7 @@ const game = {
         game.updateDisplay();
     };
 },
+
 };
 
 // ///////TESTING//////////
@@ -113,6 +118,28 @@ button.addEventListener('click',()=>{
         game.getMonstersLeft();
     });
 };
+
+
+document.getElementById('save-button').addEventListener('click',()=>{
+localStorage.setItem("game-data", JSON.stringify(game));
+
+
+    alert('Progress saved')
+});
+
+
+
 game.printUpgradeInfo()
 game.getMonstersLeft()
 // /////////////////////////
+if(localStorage.length > 0){
+            const gameData = JSON.parse(localStorage.getItem('game-data'));
+            game.clicks = gameData.clicks;
+            game.monsterAmount = gameData.monsterAmount;
+            game.activeUpgrades = gameData.activeUpgrades;
+            game.upgrades = gameData.upgrades;
+            game.multiplier = gameData.multiplier;
+            game.updateDisplay();
+        };
+game.init()
+console.log(game.activeUpgrades)

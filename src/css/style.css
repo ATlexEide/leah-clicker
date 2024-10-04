@@ -62,9 +62,20 @@ main{
     width: var(--categoryWidth);
     background-color: rgba(0, 0, 0, 0.3);
     display: grid;
-    grid:repeat(4,100px)/1fr;
+    grid:repeat(8,100px)/1fr;
     -webkit-text-stroke: black 1px;
 }
+#save-container{
+    grid-area: 6 / 1 / 7 / -1 ;
+display: flex;
+place-self: center;
+}
+#save-button{
+background: rgb(0, 0, 0,0);
+border:none;
+font-size: 100px;
+};
+
 #stats-clicks{
     display: flex;
     flex-direction: column;
