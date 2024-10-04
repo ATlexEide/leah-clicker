@@ -1,3 +1,5 @@
+import { displayUpgrades } from "./displayUpgrades.mjs";
+import { upgrades } from "./upgrades.mjs";
 const game = {
     imageRotation:{
         image: document.querySelector('#leah'),
@@ -6,6 +8,7 @@ const game = {
     // What do you think
     init:(()=>{
         console.log('Init');
+        displayUpgrades();
         // Check for clicks
         document.querySelector('#leah').addEventListener('mousedown',(e)=>{
         game.imageRotation.deg += 10;
@@ -19,11 +22,12 @@ const game = {
     })(),
     // Read the key name
     printUpgradeInfo:()=>{
-        for(const upgrade of Object.entries(game.upgrades)){
-            if(!upgrade)
-                return
-            document.getElementById(`${upgrade[1].id}-desc`).textContent = upgrade[1].description;
-        }
+        game.upgrades.forEach(upgrade => {
+            if(upgrade === null || upgrade === undefined){
+                return;
+            }else{
+            document.getElementById(`${upgrade.id}-desc`).textContent = upgrade.description;
+        }});
     },
     updateDisplay: ()=>{
     document.querySelector('#count-amount').textContent=`x ${game.monsterAmount.toFixed(1)}`;
@@ -48,40 +52,12 @@ const game = {
     // Amount of registered clicks
     clicks: 0,
     // Available upgrades
-    upgrades:{
-        programmerSocks:{   
-            id: 'programmerSocks',
-            name:'Programmer Socks',
-            price: 100,
-            monstersLeftToBuy: 999,
-            multiplier: 0.5,
-            description:'Sokker som gir deg en buff på programmering. Debuff på straightness. Følger med vscode themes!',
-            amount:0,
-            },
-        miku:{
-            id: 'miku',
-            name:'Miku',
-            price: 500,
-            monstersLeftToBuy: 999,
-            multiplier: 10,
-            description:'Beste vocaloid artisten. En kjærlig og fantastisk vocaloid som eier hele verden og skaper glede.',
-            amount:0,
-            },
-        neeko:{
-            id: 'neeko',
-            name:'Neeko',
-            price: 1000,
-            monstersLeftToBuy: 999,
-            multiplier: 100,        
-            description:'En vill og quirky kvinne med lesbiske tendenser. Shuma sniffer og hella cute. Bird fetishiser.',
-            amount:0,
-            },
-    },
+    upgrades:upgrades,
     // List of active/bought upgrades
     activeUpgrades:[],
     // Add upgrade to active upgrades
     addUpgrade:(upgrade)=>{
-        const currUpgrade = game.upgrades[upgrade];
+        const currUpgrade = upgrade;
         game.multiplier += currUpgrade.multiplier;
         currUpgrade.amount++;
         game.activeUpgrades.push(currUpgrade);
@@ -104,29 +80,36 @@ const game = {
     },
     // Get and display amount of monsters left to buy upgrade
     getMonstersLeft: ()=>{
-        for(const upgrade of Object.entries(game.upgrades)){
-            const item = upgrade[1];
-            item.monstersLeftToBuy = item.price - game.monsterAmount;
-            const priceElement = document.getElementById(`${item.id}-price`);
-            priceElement.textContent = `Price: ${item.price} >> Monsters remaining to buy: ${item.monstersLeftToBuy.toFixed(1)}`;
-        };
+        game.upgrades.forEach(upgrade => {
+            if(upgrade === null || upgrade === undefined){
+                return;
+            }else {
+
+                const item = upgrade;
+                item.monstersLeftToBuy = item.price - game.monsterAmount;
+                const priceElement = document.getElementById(`${item.id}-price`);
+                priceElement.textContent = `Price: ${item.price} >> Monsters remaining to buy: ${item.monstersLeftToBuy.toFixed(1)}`;
+            }
+    
+        });
     },
     // If player has enough monsters for an upgrade, add upgrade and delete monsters
     priceCheck:(upgrade)=>{
-    if(game.monsterAmount >= game.upgrades[upgrade].price){
+    if(game.monsterAmount >= upgrade.price){
         game.addUpgrade(upgrade);
-        game.monsterAmount -= game.upgrades[upgrade].price;
+        game.monsterAmount -= upgrade.price;
         game.updateDisplay();
     };
 },
 };
 
 // ///////TESTING//////////
-const btns = document.querySelectorAll('.upgrade-buttons');
+
+const btns = document.querySelectorAll('.upgrade-button');
 for(const button of btns){
 button.addEventListener('click',()=>{
         const upgrade = button.id;
-        game.priceCheck(upgrade);
+        game.priceCheck(game.upgrades.find(obj => obj.id === upgrade));
         game.getMonstersLeft();
     });
 };

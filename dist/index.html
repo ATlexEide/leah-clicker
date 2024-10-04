@@ -1,76 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leah Clicker</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/whitemonster.webp" />
+
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/index.js" defer></script>
-<script defer src="index.bundle.js"></script></head>
-<body>
-    <header>Leah Clicker</header>
+  <script defer src="index.bundle.js"></script></head>
+  <body>
+    <header>Leah Clicker<span>(pre-alpha build)</span></header>
     <main>
-        <div id="stats">
-            <div id="stats-clicks"></div>
+      <div id="stats">
+
+        <div id="stats-clicks">
+          <h2>Clicks</h2>
+          <!-- <div><img src="" alt="" /></div> -->
+          <div id="clicks-display">0 clicks</div>
         </div>
-        <div id="main-game">
-            <div id="header"></div>
-                <div id="leah">
-                    <img src="./images/leah.jpeg" alt="a weeb">
-                </div>
-            <div id="monster-count">
-                <div id="count-img">
-                    <img src="./images/whitemonster.webp" alt="White monster can">
-                </div>
-                <div id="count-amount">x  0</div>
-            </div>
+
+        <div id="stats-upgrades">
+          <h2>Upgrades</h2>
+          <!-- <div><img src="" alt="" /></div> -->
+          <ul id="stats-upgrades-display"></ul>
         </div>
-        <div id="upgrades">
-            <div class="upgrade">
-                <div class="upgrade-header">
-                    <h1 class="upgrade-name" id="programmerSocks">Programmer socks</h1>
-                </div>
-                <div class="upgrade-body">
-                    <div class="upgrade-img">
-                        <img src="./images/socks.webp" alt="Programmer socks">
-                    </div>
-                    <div class="upgrade-desc">
-                        <h2 class="upgrade-price" id="programmerSocks-price">Price: | Monsters remaining to buy:</h2>
-                        <p class="desc-para"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="upgrade">
-                <div class="upgrade-header">
-                    <h1 class="upgrade-name" id="miku">Miku</h1>
-                </div>
-                <div class="upgrade-body">
-                    <div class="upgrade-img">
-                        <img src="./images/miku.jpeg" alt="hatsune miku">
-                    </div>
-                    <div class="upgrade-desc">
-                        <h2 class="upgrade-price" id="miku-price">Price: | Monsters remaining to buy:</h2>
-                        <p class="desc-para"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="upgrade">
-                <div class="upgrade-header">
-                    <h1 class="upgrade-name" id="neeko">Neeko</h1>
-                </div>
-                <div class="upgrade-body">
-                    <div class="upgrade-img">
-                        <img src="./images/neeko.png" alt="Neeko">
-                    </div>
-                    <div class="upgrade-desc">
-                        <h2 class="upgrade-price" id="neeko-price">Price: | Monsters remaining to buy:</h2>
-                        <p class="desc-para"></p>
-                    </div>
-                </div>
-            </div>
+
+      </div>
+      <div id="main-game">
+        <div id="header"></div>
+        <div id="leah">
+          <img src="./images/leah.jpeg" alt="a weeb" />
+        </div>
+        <div id="monster-count">
+          <div id="count-img">
+            <img src="./images/whitemonster.webp" alt="White monster can" />
+          </div>
+          <div id="count-amount">x 0</div>
+        </div>
+      </div>
+      <div id="upgrades">
 
 
+        <div class="upgrade">
+          <div class="upgrade-header">
+            <h1 class="upgrade-name" id="programmerSocks-title">
+              Programmer socks
+            </h1>
+          </div>
+          <div class="upgrade-body">
+            <div class="upgrade-img">
+              <img src="./images/programmersocks.jpeg" alt="Programmer socks" />
+            </div>
+            <div class="upgrade-desc">
+              <h2 class="upgrade-price" id="programmerSocks-price">
+                Price: | Monsters remaining to buy:
+              </h2>
+              <p id="programmerSocks-desc"></p>
+            </div>
+            <div class="upgrade-buttons" id="programmerSocks">
+              <button>Buy</button>
+            </div>
+          </div>
         </div>
+
+
+        <div class="upgrade">
+          <div class="upgrade-header">
+            <h1 class="upgrade-name" id="miku">Miku</h1>
+          </div>
+          <div class="upgrade-body">
+            <div class="upgrade-img">
+              <img src="./images/miku.jpeg" alt="hatsune miku" />
+            </div>
+            <div class="upgrade-desc">
+              <h2 class="upgrade-price" id="miku-price">
+                Price: | Monsters remaining to buy:
+              </h2>
+              <p id="miku-desc"></p>
+            </div>
+            <div class="upgrade-buttons" id="miku">
+              <button>Buy</button>
+            </div>
+            </div>
+          </div>
+          
+          
+          
+          <div class="upgrade">
+            <div class="upgrade-header">
+              <h1 class="upgrade-name" id="neeko">Neeko</h1>
+            </div>
+            <div class="upgrade-body">
+              <div class="upgrade-img">
+                <img src="./images/neeko.png" alt="Neeko" />
+              </div>
+              <div class="upgrade-desc">
+                <h2 class="upgrade-price" id="neeko-price">
+                  Price: | Monsters remaining to buy:
+                </h2>
+                <p id="neeko-desc"></p>
+              </div>
+              <div class="upgrade-buttons" id="neeko">
+                <button>Buy</button>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
