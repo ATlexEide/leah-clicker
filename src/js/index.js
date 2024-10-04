@@ -132,7 +132,7 @@ localStorage.setItem("game-data", JSON.stringify(game));
 game.printUpgradeInfo()
 game.getMonstersLeft()
 // /////////////////////////
-if(localStorage.length > 0){
+if(localStorage.getItem('game-data') !== null){
             const gameData = JSON.parse(localStorage.getItem('game-data'));
             game.clicks = gameData.clicks;
             game.monsterAmount = gameData.monsterAmount;
