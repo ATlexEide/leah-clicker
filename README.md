@@ -5,6 +5,6 @@
 > * ~~Rough layout~~
 > * ~~Base logic~~
 > * ~~Buy buttons for upgrades~~
-> * Save button / functionality
+> * ~~Save button / functionality~~
 > * Figure out what stats and description to give different upgrades
 > * Overall redesign
